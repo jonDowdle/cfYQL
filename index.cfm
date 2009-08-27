@@ -1,5 +1,4 @@
 <cf_yql format="query">
-<!---Select * from twitter.user.timeline where id in ('jdowdle', 'sam_farmer')--->
 select * from flickr.photos.recent
 </cf_yql>
 
