@@ -1,8 +1,9 @@
 <cf_yql format="query">
-<!---Select * from twitter.user.timeline where id in ('jdowdle', 'sam_farmer')--->
-select * from flickr.photos.recent
+select * from twitter.user.status where id = 'jdowdle'
 limit 10
 </cf_yql>
+
+<cfdump var="#cfyql#"><cfabort>
 
 <!---Loop over recent flickr images--->
 <cfloop query="cfyql">
