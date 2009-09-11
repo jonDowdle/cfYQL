@@ -1,8 +1,9 @@
+<cfparam name="attributes.format" default="xml">
+<cfparam name="attributes.name" default="cfyql">
+
 <cfif thisTag.ExecutionMode eq 'end'>
-	<cfif not structKeyExists(attributes,"name")>
-		<cfset attributes.name = "cfyql" />
-	</cfif>
 	<cfset caller[attributes.name] = processContent( yql = trim(thisTag.GeneratedContent), args = Duplicate(attributes) ) />
+	<cfset thisTag.generatedContent = ''>
 </cfif>
 
 <cffunction name="processContent" access="private" output="false" returntype="any" >
@@ -19,7 +20,7 @@
 	
 	<cfset yqlClean = encodeYql(arguments.yql) />
 	
-	<cfhttp url="http://query.yahooapis.com/v1/public/yql?q=#yqlClean#&env=http%3A%2F%2Fdatatables.org%2Falltables.env" method="GET" />	
+	<cfhttp url="http://query.yahooapis.com/v1/public/yql?q=#yqlClean#&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=#attributes.format#" method="GET" />	
 	
 	<cfset xmlYql = xmlParse(cfhttp.filecontent) />
 	

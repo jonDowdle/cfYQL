@@ -1,6 +1,7 @@
 <cf_yql format="query">
 <!---Select * from twitter.user.timeline where id in ('jdowdle', 'sam_farmer')--->
 select * from flickr.photos.recent
+limit 10
 </cf_yql>
 
 <!---Loop over recent flickr images--->
@@ -12,6 +13,7 @@ select * from flickr.photos.recent
 
 <cf_yql format="query">
 select * from rss where url='http://rss.news.yahoo.com/rss/topstories'
+limit 5
 </cf_yql>
 
 <ul>
